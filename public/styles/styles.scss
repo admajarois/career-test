@@ -1,4 +1,126 @@
+$primaryColor: #10c26f;
+$secondaryColor: #c5e058;
+$whiteColor: #fbfbfb;
+$blackColor: #000000;
+
+@mixin gradient($startColor, $endColor, $orientation) {
+  @if $orientation == "vertical" {
+    background: linear-gradient(to bottom, $startColor, $endColor);
+  } @else if $orientation == "horizontal" {
+    background: linear-gradient(to right, $startColor, $endColor);
+  } @else {
+    background: radial-gradient($startColor, $endColor);
+  }
+}
+
 body {
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
+  padding: 0;
+  margin: 0;
   flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.card-login {
+  background: #fbfbfb;
+  border-radius: 8px;
+  box-shadow: 1px 2px 8px rgba($color: $blackColor, $alpha: 0.6);
+  margin: 6rem auto 8.1rem auto;
+  width: 329px;
+  padding: 2em 2em;
+}
+
+.card-login-title {
+  letter-spacing: 4px;
+  padding: 13px 0 23px 0;
+  text-align: center;
+}
+
+.divider {
+  @include gradient($primaryColor, $secondaryColor, vertical);
+  height: 2px;
+  margin: -1.1rem auto 0 auto;
+  width: 89px;
+}
+
+label {
+  font-size: 11pt;
+  padding-top: 13px;
+}
+
+.form {
+  &-login {
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    .forgot-password {
+      color: $primaryColor;
+      font-size: 10pt;
+      margin-top: 3px;
+      text-align: right;
+      text-decoration: none;
+      transition: 0.25s;
+      &:hover {
+        color: $secondaryColor;
+      }
+    }
+    #submit-btn {
+      @include gradient($primaryColor, $secondaryColor, horizontal);
+      border: none;
+      border-radius: 21px;
+      box-shadow: 0px 1px 8px $secondaryColor;
+      cursor: pointer;
+      color: $whiteColor;
+      height: 42.3px;
+      margin: 0 auto;
+      margin-top: 50px;
+      transition: 0.25s;
+      width: 153px;
+      &:hover {
+        box-shadow: 0px 1px 18px $secondaryColor;
+      }
+    }
+    .signup {
+      color: $primaryColor;
+      text-decoration: none;
+      font-size: 10pt;
+      margin: 16px 0 0 0;
+      text-align: center;
+      transition: 0.25s;
+      &:hover {
+        color: $secondaryColor;
+      }
+    }
+    .img-profile {
+      display: flex;
+      justify-content: center;
+      img {
+        width: 120px;
+        border-radius: 50%;
+      }
+    }
+  }
+  &-divider {
+    @include gradient($primaryColor, $secondaryColor, vertical);
+    height: 1px;
+    width: 100%;
+  }
+  &-control {
+    background: $whiteColor;
+    border: none;
+    outline: none;
+    padding: 14px 0 0 0;
+    height: 20px;
+  }
+  &-control-file {
+    margin: 1rem 0 0 0;
+    cursor: pointer;
+    border: 1px;
+  }
 }
