@@ -35,11 +35,11 @@ main {
   text-align: center;
 }
 
-.divider {
+.underline {
   background: -webkit-gradient(linear, left top, left bottom, from(#10c26f), to(#c5e058));
   background: linear-gradient(to bottom, #10c26f, #c5e058);
   height: 2px;
-  margin: -1.1rem auto 0 auto;
+  margin: 0.1rem auto 0 auto;
   width: 89px;
 }
 
@@ -130,14 +130,6 @@ label {
   background: linear-gradient(to bottom, #10c26f, #c5e058);
   height: 1px;
   width: 100%;
-}
-
-.form-control {
-  background: #fbfbfb;
-  border: none;
-  outline: none;
-  padding: 14px 0 0 0;
-  height: 20px;
 }
 
 .form-control-file {

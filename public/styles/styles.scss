@@ -42,10 +42,10 @@ main {
   text-align: center;
 }
 
-.divider {
+.underline {
   @include gradient($primaryColor, $secondaryColor, vertical);
   height: 2px;
-  margin: -1.1rem auto 0 auto;
+  margin: 0.1rem auto 0 auto;
   width: 89px;
 }
 
@@ -111,13 +111,13 @@ label {
     height: 1px;
     width: 100%;
   }
-  &-control {
-    background: $whiteColor;
-    border: none;
-    outline: none;
-    padding: 14px 0 0 0;
-    height: 20px;
-  }
+  // &-control {
+  //   @include gradient($primaryColor, $secondaryColor, vertical);
+  //   color: $whiteColor;
+  //   border: none;
+  //   outline: none;
+  //   padding: 14px 0 0 0;
+  // }
   &-control-file {
     margin: 1rem 0 0 0;
     cursor: pointer;

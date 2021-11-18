@@ -4,7 +4,7 @@
 <div class="card-login">
     <div class="card-login-title">
         <h1>LOGIN</h1>
-        <div class="divider"></div>
+        <div class="underline"></div>
     </div>
     <form action="" method="post" class="form-login">
         <label for="email">&nbsp;Email</label>
@@ -15,7 +15,7 @@
         <div class="form-divider"></div>
         <a href="#" class="forgot-password">Forgot password?</a>
         <input type="submit" value="LOGIN" name="submit" id="submit-btn" />
-        <a href="/auth/registerPage" class="signup">Don't have account yet?</a>
+        <a href="/register" class="signup">Don't have account yet?</a>
     </form>
 </div>
 <?= $this->endSection(); ?>
