@@ -11,7 +11,7 @@
         <h1>REGISTER</h1>
         <div class="underline"></div>
     </div>
-    <form action="<?= base_url('/registration'); ?>" method="post" class="form-login">
+    <form action="<?= base_url('/registration'); ?>" method="post" class="form-login" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <div class="img-profile">
             <img src="/images/profile.jpg" alt="">

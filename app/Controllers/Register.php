@@ -64,7 +64,7 @@ class Register extends BaseController
         }
 
         $profileImage = $this->request->getFile('profile_image');
-        dd($profileImage);
+        // dd($profileImage);
 
         if ($profileImage->getError() == 4) {
             $imageName = 'profile.jpg';
