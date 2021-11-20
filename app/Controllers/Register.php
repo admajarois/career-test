@@ -64,13 +64,13 @@ class Register extends BaseController
         }
 
         $profileImage = $this->request->getFile('profile_image');
-        // dd($profileImage);
+
 
         if ($profileImage->getError() == 4) {
             $imageName = 'profile.jpg';
         } else {
             $imageName = $profileImage->getRandomName();
-            $profileImage->move('/images', $imageName);
+            $profileImage->move('images', $imageName);
         }
 
         $this->usersModel->insert([

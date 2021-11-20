@@ -14,7 +14,7 @@
     <form action="<?= base_url('/registration'); ?>" method="post" class="form-login" enctype="multipart/form-data">
         <?= csrf_field(); ?>
         <div class="img-profile">
-            <img src="/images/profile.jpg" alt="">
+            <img src="/images/profile.jpg" id="imagePreview" alt="">
         </div>
         <label for="email">&nbsp;Email</label>
         <input type="email" id="email" name="email" class="form-control">
@@ -28,7 +28,7 @@
         <label for="confirm_password">&nbsp;Confirm Password</label>
         <input type="password" id="confirm_password" class="form-control" name="confirm_password">
         <div class="form-divider"></div>
-        <input type="file" class="form-control-file" name="profile_image" id="profile_image">
+        <input type="file" class="form-control-file" id="imageInput" onchange="previewFile()" name="profile_image" id="profile_image">
         <input type="submit" value="REGISTER" name="submit" id="submit-btn" />
         <a href="/login" class="signup">Already have an account?</a>
     </form>
