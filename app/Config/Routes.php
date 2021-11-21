@@ -35,6 +35,7 @@ $routes->get('/', 'Home::index', ['filter' => 'authFilter']);
 $routes->get('/register', 'Register::index');
 $routes->get('/login', 'Login::index');
 $routes->get('/logout', 'Login::logout');
+$routes->get('/changePassword/(:num)', 'Register::changePassword/$1');
 $routes->post('/registration', 'Register::registration');
 $routes->post('/process', 'Login::process');
 $routes->post('/sendmail', 'ForgotPassword::sendMail');

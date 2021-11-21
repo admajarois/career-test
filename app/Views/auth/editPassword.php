@@ -12,15 +12,21 @@
         </div>
     <?php endif; ?>
     <div class="card-login-title">
-        <h1>FORGOT PASSWORD</h1>
+        <h1>RESET PASSWORD</h1>
         <div class="underline"></div>
     </div>
-    <form action="<?= base_url('/sendmail'); ?>" method="post" class="form-login">
+    <form action="/register/resetPassword/<?= $user['id']; ?>" method="post" class="form-login">
         <?= csrf_field(); ?>
-        <label for="email">&nbsp;Email</label>
-        <input type="email" id="email" name="email" class="form-control">
+        <div class="img-profile">
+            <img src="/images/<?= $user['profile_image']; ?>" id="imagePreview" alt="">
+        </div>
+        <label for="password">&nbsp;New Password</label>
+        <input type="password" id="password" class="form-control" name="password">
         <div class="form-divider"></div>
-        <input type="submit" value="SEND MAIL" name="submit" id="submit-btn" />
+        <label for="confirm_password">&nbsp;Confirm New Password</label>
+        <input type="password" id="confirm_password" class="form-control" name="confirm_password">
+        <div class="form-divider"></div>
+        <input type="submit" value="RESET" name="submit" id="submit-btn" />
     </form>
 </div>
 <?= $this->endSection(); ?>

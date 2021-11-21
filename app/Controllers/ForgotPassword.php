@@ -12,6 +12,15 @@ class ForgotPassword extends BaseController
         $this->session = session();
         $this->validation = \Config\Services::validation();
         $this->email = \Config\Services::email();
+        $this->config = array(
+            'protocol' => 'smtp',
+            'priority' => 1,
+            'SMTPHost' => 'smtp.gmail.com',
+            'SMTPPort' => 587,
+            'SMTPUser' => 'gemaktechno@gmail.com',
+            'SMTPPass' => 'Gemak12345',
+            'charset' => 'iso-8859-1'
+        );
     }
     public function index()
     {
@@ -23,16 +32,7 @@ class ForgotPassword extends BaseController
 
     public function sendMail()
     {
-        $config = array(
-            'protocol' => 'smtp',
-            'priority' => 1,
-            'SMTPHost' => 'smtp.gmail.com',
-            'SMTPPort' => 587,
-            'SMTPUser' => 'gemaktechno@gmail.com',
-            'SMTPPass' => 'Gemak12345',
-            'charset' => 'iso-8859-1'
-        );
-        $this->email->initialize($config);
+        $this->email->initialize($this->config);
         if (!$this->validate([
             'email' => [
                 'rules' => 'required',
@@ -52,12 +52,12 @@ class ForgotPassword extends BaseController
             $this->email->setFrom('gemaktechno@gmail.com', 'PT Gemak Techno');
             $this->email->setTo($email);
             $this->email->setSubject('Reset Password');
-            $this->email->setMessage('Ngetes Email dulur');
+            $this->email->setMessage('Ikuti link berikut ini untuk mengganti password anda, http://localhost:8080/changePassword/' . $dataUser['id']);
             if (!$this->email->send()) {
                 $this->session->setFlashdata('error', $this->email->printDebugger());
                 return redirect()->back();
             } else {
-                $this->session->setFlashdata('success', "Berhasil dikirim");
+                $this->session->setFlashdata('success', "Berhasil dikirim, silahkan cek email anda");
                 return redirect()->to(base_url('/login'));
             }
         } else {

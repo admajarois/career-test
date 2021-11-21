@@ -83,4 +83,40 @@ class Register extends BaseController
         ]);
         return redirect()->to('/login');
     }
+
+    public function changePassword($id)
+    {
+        $data = [
+            'title' => 'Change Password',
+            'user' => $this->usersModel->getUsersbyId($id)
+        ];
+        return view('auth/editPassword', $data);
+    }
+
+    public function resetPassword($id)
+    {
+        if (!$this->validate([
+            'password' => [
+                'rules' => 'required|min_length[8]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'min_length[8]' => '{field} harus lebih dari 8 karakter'
+                ]
+            ],
+            'confirm_password' => [
+                'rules' => 'matches[password]',
+                'errors' => [
+                    'matches' => 'Password tidak sama'
+                ]
+            ]
+        ])) {
+            $this->session->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+
+        $password = $this->request->getVar('password');
+        $this->usersModel->set('password', password_hash($password, PASSWORD_BCRYPT))->where('id', $id)->update();
+        $this->session->setFlashdata('success', 'Password berhasil diubah');
+        return redirect()->to('/login');
+    }
 }

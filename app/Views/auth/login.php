@@ -6,6 +6,10 @@
         <div class="alert alert-danger" id="liveAlertPlaceholder" role="alert">
             <?= session()->getFlashdata('error'); ?>
         </div>
+    <?php elseif (!empty(session()->getFlashdata('success'))) : ?>
+        <div class="alert alert-success" id="liveAlertPlaceholder" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+        </div>
     <?php endif; ?>
     <div class="card-login-title">
         <h1>LOGIN</h1>
