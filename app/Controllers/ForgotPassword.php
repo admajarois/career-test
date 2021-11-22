@@ -17,8 +17,8 @@ class ForgotPassword extends BaseController
             'priority' => 1,
             'SMTPHost' => 'smtp.gmail.com',
             'SMTPPort' => 587,
-            'SMTPUser' => 'yourmail', #insert your password as a mail sender
-            'SMTPPass' => 'yourpass', #insert yout gmail password
+            'SMTPUser' => 'gmail.com', #insert your password as a mail sender
+            'SMTPPass' => 'gmail password', #insert yout gmail password
             'charset' => 'iso-8859-1'
         );
     }
@@ -49,7 +49,7 @@ class ForgotPassword extends BaseController
             'email' => $email
         ])->first();
         if ($dataUser) {
-            $this->email->setFrom('your gmail', 'your company name'); #set gmail and name as sender
+            $this->email->setFrom('your gmail', 'your name'); #set gmail and name as sender
             $this->email->setTo($email);
             $this->email->setSubject('Reset Password');
             $this->email->setMessage('Ikuti link berikut ini untuk mengganti password anda, http://localhost:8080/changePassword/' . $dataUser['id']);
