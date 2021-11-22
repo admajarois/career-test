@@ -24,8 +24,10 @@ class Register extends BaseController
         ];
         return view('auth/register', $data);
     }
+    #function for registration
     public function registration()
     {
+        #validating form
         if (!$this->validate([
             'name' => [
                 'rules' => 'required|min_length[4]|max_length[30]',
@@ -63,16 +65,19 @@ class Register extends BaseController
             return redirect()->back()->withInput();
         }
 
+
         $profileImage = $this->request->getFile('profile_image');
 
-
+        #codition for show image preview
         if ($profileImage->getError() == 4) {
             $imageName = 'profile.jpg';
+            #if profile image is null set default image is profile.jpg
         } else {
+            #if  profile not nul set random name and save to images folder
             $imageName = $profileImage->getRandomName();
             $profileImage->move('images', $imageName);
         }
-
+        #inserting data to database
         $this->usersModel->insert([
             'name' => $this->request->getVar('name'),
             'email' => $this->request->getVar('email'),
@@ -84,6 +89,7 @@ class Register extends BaseController
         return redirect()->to('/login');
     }
 
+    #this function is change password view
     public function changePassword($id)
     {
         $data = [
@@ -93,6 +99,8 @@ class Register extends BaseController
         return view('auth/editPassword', $data);
     }
 
+
+    #function for reset password
     public function resetPassword($id)
     {
         if (!$this->validate([
